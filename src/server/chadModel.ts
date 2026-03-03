@@ -1,20 +1,21 @@
-// Chad model client, using Moonshot (Kimi) API
+// Chad model client, using DeepInfra's OpenAI-compatible API to call Kimi (Moonshot)
 
-const MOONSHOT_BASE_URL = process.env.MOONSHOT_BASE_URL || "https://api.moonshot.cn/v1";
+const DEEPINFRA_BASE_URL = process.env.DEEPINFRA_BASE_URL || "https://api.deepinfra.com/v1/openai";
 
-if (!process.env.MOONSHOT_API_KEY) {
-  console.warn("[ChadModel] MOONSHOT_API_KEY is not set. /api/generate-plan will fail until it's configured.");
+if (!process.env.DEEPINFRA_API_KEY) {
+  console.warn("[ChadModel] DEEPINFRA_API_KEY is not set. /api/generate-plan will fail until it's configured.");
 }
 
+// Default to Kimi on DeepInfra; override via CHAD_MODEL if you want something else
 const DEFAULT_MODEL = process.env.CHAD_MODEL || "moonshot/kimi-k2.5";
 
 export async function callChadModel(prompt: string): Promise<string> {
-  const apiKey = process.env.MOONSHOT_API_KEY;
+  const apiKey = process.env.DEEPINFRA_API_KEY;
   if (!apiKey) {
-    throw new Error("MOONSHOT_API_KEY is not configured on the server.");
+    throw new Error("DEEPINFRA_API_KEY is not configured on the server.");
   }
 
-  const res = await fetch(`${MOONSHOT_BASE_URL}/chat/completions`, {
+  const res = await fetch(`${DEEPINFRA_BASE_URL}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,13 +32,13 @@ export async function callChadModel(prompt: string): Promise<string> {
 
   if (!res.ok) {
     const text = await res.text().catch(() => "");
-    throw new Error(`Moonshot API error: ${res.status} ${res.statusText} ${text}`);
+    throw new Error(`DeepInfra API error: ${res.status} ${res.statusText} ${text}`);
   }
 
   const data: any = await res.json();
   const content = data?.choices?.[0]?.message?.content;
   if (!content) {
-    throw new Error("Chad model (Moonshot) returned empty content.");
+    throw new Error("Chad model (DeepInfra/Kimi) returned empty content.");
   }
 
   return content;
