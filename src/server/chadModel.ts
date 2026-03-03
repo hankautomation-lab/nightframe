@@ -7,7 +7,8 @@ if (!process.env.DEEPINFRA_API_KEY) {
 }
 
 // Default to Kimi on DeepInfra; override via CHAD_MODEL if you want something else
-const DEFAULT_MODEL = process.env.CHAD_MODEL || "moonshot/kimi-k2.5";
+// NOTE: Model id must match DeepInfra docs exactly.
+const DEFAULT_MODEL = process.env.CHAD_MODEL || "moonshotai/Kimi-K2.5";
 
 export async function callChadModel(prompt: string): Promise<string> {
   const apiKey = process.env.DEEPINFRA_API_KEY;
