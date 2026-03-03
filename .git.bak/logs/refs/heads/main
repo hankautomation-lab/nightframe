@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 89deb49939fdbebc6b1d005d943d6645aded4ce7 michael quinn <mike@srv1451804.hstgr.cloud> 1772504580 +0000	commit (initial): chore: initial NightFrame repo
+89deb49939fdbebc6b1d005d943d6645aded4ce7 dbf1cbfcf7450e54dcb76c4e4e21d3b23b1d6c1c michael quinn <mike@srv1451804.hstgr.cloud> 1772504898 +0000	commit: feat: initial NightFrame landing page and intake form
+dbf1cbfcf7450e54dcb76c4e4e21d3b23b1d6c1c beb30a47930d93c12d6581d8a77294d62a155055 michael quinn <mike@srv1451804.hstgr.cloud> 1772507569 +0000	commit: chore: add Chad prompt + weekly plan template
+beb30a47930d93c12d6581d8a77294d62a155055 bb6455c8ad311454a2da611c015e24d55303e551 michael quinn <mike@srv1451804.hstgr.cloud> 1772510394 +0000	commit: chore: add basic gitignore
+bb6455c8ad311454a2da611c015e24d55303e551 0fcc773d3c2c49ae0de1b78922349b1ead70e7c1 michael quinn <mike@srv1451804.hstgr.cloud> 1772511121 +0000	commit: chore: drop node_modules/data and tidy config
