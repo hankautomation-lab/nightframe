@@ -163,6 +163,36 @@ export default function HomePage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="wantsToRun">Do you want to run?</label>
+                <select
+                  id="wantsToRun"
+                  name="wantsToRun"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                >
+                  <option value="yes">Yes, include running</option>
+                  <option value="no">No, use incline walking instead</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="runExperience">Running experience</label>
+                <select
+                  id="runExperience"
+                  name="runExperience"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                >
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+                <p className="text-xs text-slate-500">
+                  If you choose "no" above, this is just used to scale incline walking difficulty.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1">
                 <label className="text-sm font-medium" htmlFor="currentWeight">Current weight (lbs)</label>
                 <input
                   id="currentWeight"

@@ -15,6 +15,8 @@ export async function POST(req: NextRequest) {
       currentWeight: formData.get("currentWeight")?.toString() ?? "",
       targetWeight: formData.get("targetWeight")?.toString() ?? "",
       constraints: formData.get("constraints")?.toString() ?? "",
+      wantsToRun: formData.get("wantsToRun")?.toString() ?? "",
+      runExperience: formData.get("runExperience")?.toString() ?? "",
       createdAt: new Date().toISOString(),
       ip: req.headers.get("x-forwarded-for") ?? req.ip ?? null,
       userAgent: req.headers.get("user-agent") ?? null,

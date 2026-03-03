@@ -45,6 +45,8 @@ async function main() {
     currentWeight = "",
     targetWeight = "",
     constraints = "",
+    wantsToRun = "",
+    runExperience = "",
     createdAt = "",
   } = submission;
 
@@ -57,6 +59,8 @@ async function main() {
     `- Current weight (lbs): ${currentWeight}\n` +
     `- Target weight (lbs): ${targetWeight}\n` +
     `- Constraints / notes: ${constraints}\n` +
+    `- Wants to run: ${wantsToRun}\n` +
+    `- Running experience: ${runExperience}\n` +
     (createdAt ? `- Submitted at: ${createdAt}\n` : "");
 
   const combinedPrompt = `${chadPrompt}\n\n---\n\n${formSummary}\n\nUsing the instructions above, respond as Chad and generate a complete plan for this person in the exact output format specified (sections 1–6).`;

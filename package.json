@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "chad:plan": "node scripts/generate_chad_plan.mjs"
   },
   "dependencies": {
     "next": "latest",
