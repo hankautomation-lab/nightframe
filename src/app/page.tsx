@@ -1,3 +1,5 @@
+import { OperatorTools } from "@/components/OperatorTools";
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
@@ -89,8 +91,8 @@ export default function HomePage() {
         <section className="space-y-4">
           <h2 className="text-xl font-semibold">Beta intake form</h2>
           <p className="text-slate-300">
-            NightFrame is in early beta. For now, plans are generated using a mix of templates and
-            human logic. Fill out the form below and you&apos;ll get a custom weekly frame by email.
+            NightFrame is in early beta. Plans are generated using a mix of templates, real-world
+            logic, and an AI helper (Chad) that specializes in shift-worker training.
           </p>
 
           <form
@@ -238,6 +240,9 @@ export default function HomePage() {
             </p>
           </form>
         </section>
+
+        {/* Operator section is a client component so we can use onClick handlers safely */}
+        <OperatorTools />
 
         <footer className="pt-4 text-xs text-slate-600">
           NightFrame is a small experiment for shift workers. No spam, no bullshit.
