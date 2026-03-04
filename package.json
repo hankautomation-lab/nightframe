@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "chad:plan": "node scripts/generate_chad_plan.mjs"
+    "chad:plan": "node scripts/generate_chad_plan.mjs",
+    "tavily": "node --loader ts-node/esm scripts/tavily_search.mjs"
   },
   "dependencies": {
     "next": "latest",
