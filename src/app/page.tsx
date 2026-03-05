@@ -129,11 +129,11 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold">Beta intake form</h2>
+        <section id="intake" className="space-y-4">
+          <h2 className="text-xl font-semibold">Tell us about your shifts</h2>
           <p className="text-slate-300">
-            NightFrame is in early beta. Plans are generated using a mix of templates, real-world
-            logic, and an AI helper (Chad) that specializes in shift-worker training.
+            NightFrame is in early beta. Fill this out with how you actually live. Chad will use it
+            to build a weekly frame you can follow without wrecking your job or your sleep.
           </p>
 
           <form
@@ -141,8 +141,161 @@ export default function HomePage() {
             action="/api/submit"
             className="space-y-4 rounded-md border border-slate-800 bg-slate-900/60 p-4"
           >
+            {/* Schedule */}
             <div className="space-y-1">
-              <label className="text-sm font-medium" htmlFor="email">Email</label>
+              <label className="text-sm font-medium" htmlFor="shifts">Shift schedule / hours</label>
+              <textarea
+                id="shifts"
+                name="shifts"
+                required
+                rows={2}
+                placeholder="e.g. 4 nights on (19:00–07:00), 3 off, or 1 week 13:30–22:00 / 1 week 06:30–14:30"
+                className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              />
+            </div>
+
+            {/* Training & goal */}
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="goal">Goal</label>
+                <select
+                  id="goal"
+                  name="goal"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  <option value="lose">Lose fat</option>
+                  <option value="maintain">Maintain</option>
+                  <option value="gain">Build muscle</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="trainingDays">Training days / week</label>
+                <select
+                  id="trainingDays"
+                  name="trainingDays"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5+</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="sessionLength">Session length (approx)</label>
+                <input
+                  id="sessionLength"
+                  name="sessionLength"
+                  type="text"
+                  placeholder="e.g. 30–45 min"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="wantsToRun">Cardio preference</label>
+                <select
+                  id="wantsToRun"
+                  name="wantsToRun"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  <option value="yes">I&apos;m fine with running</option>
+                  <option value="no">No running – use incline walking</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="runExperience">Running experience</label>
+                <select
+                  id="runExperience"
+                  name="runExperience"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+                <p className="text-xs text-slate-500">
+                  If you choose no running, this just helps scale incline walking difficulty.
+                </p>
+              </div>
+            </div>
+
+            {/* You */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="currentWeight">Current weight (lbs)</label>
+                <input
+                  id="currentWeight"
+                  name="currentWeight"
+                  type="number"
+                  step="0.1"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="targetWeight">Target weight (lbs)</label>
+                <input
+                  id="targetWeight"
+                  name="targetWeight"
+                  type="number"
+                  step="0.1"
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="jobType">Job type</label>
+                <input
+                  id="jobType"
+                  name="jobType"
+                  type="text"
+                  placeholder="ATC, nurse, police, EMT, factory, etc."
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-sm font-medium" htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-medium" htmlFor="constraints">Constraints / notes</label>
+              <textarea
+                id="constraints"
+                name="constraints"
+                rows={2}
+                placeholder="Injuries, dietary constraints, preferred training times, anything else important."
+                className="w-full rounded bg-slate-950 px-3 py-2 text-sm text-slate-50 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center rounded bg-orange-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            >
+              Build my NightFrame
+            </button>
+
+            <p className="text-xs text-slate-500">
+              In beta: plans are generated using your answers plus templates. You&apos;ll receive
+              an email with your first weekly frame once it&apos;s ready.
+            </p>
+          </form>
+        </section>
               <input
                 id="email"
                 name="email"
@@ -282,11 +435,22 @@ export default function HomePage() {
           </form>
         </section>
 
+        {/* Chad intro */}
+        <section className="space-y-3 rounded-md border border-slate-800 bg-slate-900/60 p-4">
+          <h2 className="text-sm font-semibold text-slate-100">Who&apos;s Chad?</h2>
+          <p className="text-xs text-slate-300">
+            Chad is the AI coach behind NightFrame. He doesn&apos;t do influencer bullshit. He takes
+            your shifts, your training time, your goal, and any constraints you give him and builds
+            a weekly frame: full-body training, cardio that fits your joints and schedule, and
+            simple nutrition numbers.
+          </p>
+        </section>
+
         {/* Operator section is a client component so we can use onClick handlers safely */}
         <OperatorTools />
 
         <footer className="pt-4 text-xs text-slate-600">
-          NightFrame is a small experiment for shift workers. No spam, no bullshit.
+          NightFrame is for people who don&apos;t get normal weekends. No spam. No bullshit.
         </footer>
       </div>
     </main>
